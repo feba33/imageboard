@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  font: inherit;
+}
+
+:root {
+  --accent-color: light-dark(#007bff, #449cff);
+  --border-color: light-dark(#ccc, #444);
+  --backdrop-color: light-dark(#eee, #333);
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  accent-color: var(--accent-color);
+
+  font-family: "system-ui", sans-serif;
+  font-size: 16px;
+
+  width: 1000px;
+  margin: 0 auto;
+}
+
+/* Text */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+/* Interactive */
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid light-dark(#ccc, #444);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  cursor: pointer;
+
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--backdrop-color);
+  /* color: light-dark(white, black); */
+}
+
+/* Forms & Inputs */
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  transform: translateY(10%);
+}
+
+progress,
+meter {
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  border-radius: 9999px;
+  background-color: var(--backdrop-color);
+}
+progress::-webkit-progress-value {
+  border-radius: 9999px;
+  background-color: var(--accent-color);
+}
+
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+
+/* Media */
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+img::before,
+picture::before,
+svg::before,
+video::before {
+  content: attr(alt);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.25rem;
+  width: calc(100% + 5px);
+  height: calc(100% + 5px);
+
+  background-color: var(--backdrop-color);
+  position: absolute;
+  top: 50%;
+  left: -2.5px;
+  transform: translateY(-50%);
+}
