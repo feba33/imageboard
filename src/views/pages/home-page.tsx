@@ -2,8 +2,8 @@ import MainLayout from "../components/layout/main-layout";
 
 export default function Homepage() {
   return (
-    <MainLayout title="Homepage">
-      <h1>Homepage</h1>
+    <MainLayout title="home">
+      <h1>Homepages</h1>
       <p>This is the Homepage page.</p>
     </MainLayout>
   );
