@@ -1,5 +1,6 @@
-import { boards } from "../../../constants";
-import Root from "../../root";
+import { boards } from "../../constants";
+import ThreadForm from "../components/thread-form";
+import Root from "../root";
 
 export default function MainLayout({
   children,
@@ -35,7 +36,11 @@ export default function MainLayout({
           ))}
         </ul>
       </nav> */}
-      <main class="w-full max-w-[1000px] mx-auto">{children}</main>
+
+      <main class="w-full max-w-[1000px] mx-auto">
+        <ThreadForm />
+        {children}
+      </main>
       <footer class="w-full max-w-[1000px] mx-auto py-4">
         <p>
           Made by feba &copy; {new Date().getFullYear()}. All rights reserved.

@@ -10,8 +10,7 @@ export default function Root({
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="/styles/tailwind.css" />
-        <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="/styles/styles.css" />
         {process.env.NODE_ENV === "development" ? <script src="/dev.js" /> : null}
         {head}
       </head>

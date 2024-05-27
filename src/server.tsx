@@ -5,6 +5,7 @@ import AboutPage from "./views/pages/about-page";
 import BoardPage from "./views/pages/board-page";
 import Homepage from "./views/pages/home-page";
 import TestPage from "./views/pages/test-page";
+import ThreadPage from "./views/pages/thread-page";
 
 export default function server() {
   const router: { [x: string]: Function } = {
@@ -16,7 +17,7 @@ export default function server() {
   const server = Bun.serve({
     port: 3000,
     async fetch(req, ser) {
-      if(ser.upgrade(req)) {
+      if (ser.upgrade(req)) {
         return;
       }
 
@@ -27,8 +28,29 @@ export default function server() {
         const res = new Response(router[url.pathname]() as string);
         res.headers.set("Content-Type", "text/html");
         return res;
-      }else if(boards.some(b => `/${b}` == url.pathname)) {
-        const res = new Response(<BoardPage board={url.pathname as Board}/> as string);
+      } else if (boards.some((b) => `/${b}` == url.pathname)) {
+        const res = new Response(
+          (
+            <BoardPage board={url.pathname as Board} active_threads={[]} />
+          ) as string
+        );
+        res.headers.set("Content-Type", "text/html");
+        return res;
+      } else if (url.pathname.startsWith("/thread")) {
+        const res = new Response(
+          (
+            <ThreadPage
+              thread={{
+                id: 1,
+                title: "Hello",
+                content: "World",
+                img_url: "https://example.com",
+                board: Board.technology,
+                posts: [],
+              }}
+            />
+          ) as string
+        );
         res.headers.set("Content-Type", "text/html");
         return res;
       }
@@ -48,7 +70,7 @@ export default function server() {
     error(e) {
       console.error(e);
       return new Response("Something went wrong", { status: 500 });
-  },
+    },
     websocket: {
       message() {},
       open() {},

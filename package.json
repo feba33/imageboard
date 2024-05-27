@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "bun run index.tsx",
-    "dev": "NODE_ENV=development bun --watch index.tsx",
-    "css": "tailwindcss -i ./src/views/index.css -o ./public/styles/tailwind.css",
+    "dev": "NODE_ENV=development bun --watch index.tsx *.css",
+    "css": "tailwindcss -i ./src/views/root.css -o ./public/styles/styles.css",
     "test": "xss-scan"
   },
   "devDependencies": {

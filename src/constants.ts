@@ -21,3 +21,19 @@ export const boards = [
   Board.meta,
   Board.politics,
 ];
+
+export interface Thread {
+  id: number;
+  title: string;
+  content: string;
+  img_url: string;
+  board: Board;
+  posts: Post[];
+}
+
+export interface Post {
+  id: number;
+  content: string;
+  img_url: string;
+  thread: Thread;
+}
